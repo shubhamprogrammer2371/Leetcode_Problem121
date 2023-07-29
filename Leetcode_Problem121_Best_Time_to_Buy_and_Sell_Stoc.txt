@@ -1,0 +1,20 @@
+int maxProfit(int *prices, int pricesSize)
+{
+    int profit ,buying_price = prices[0],temp_price = prices[0]  , net_profit = 0;
+    for (int i = 1; i < pricesSize; i++)
+    {
+        if(prices[i] < buying_price)
+        {
+            buying_price = prices[i];
+            temp_price = prices[i];
+        }
+        else if (prices[i] > temp_price)
+        {
+            temp_price = prices[i];
+            profit = temp_price - buying_price;
+            if(profit > net_profit)
+                net_profit = profit;
+        }
+    }
+    return net_profit;
+}
